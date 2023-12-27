@@ -96,6 +96,17 @@ describe('Reservation', () => {
     expect(reservation.ended).toBe(false);
     expect(reservation.reservedBy).toEqual('FAKE_STEAM_UID');
     expect(reservation.serverId).toEqual(64);
+    expect(reservation.server).toEqual({
+      id: 12345,
+      name: 'Server name',
+      flag: 'de',
+      ip: '127.0.0.1',
+      port: '27015',
+      ip_and_port: '127.0.0.1:27015',
+      sdr: false,
+      latitude: 0,
+      longitude: 0,
+    });
   });
 
   describe('#refresh', () => {

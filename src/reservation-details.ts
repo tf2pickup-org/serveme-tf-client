@@ -3,6 +3,7 @@ import { Response } from './types/serveme-tf-responses';
 import { ServerConfigId } from './types/server-config-option';
 import { WhitelistId } from './types/whitelist-option';
 import { SdrDetails } from './types/sdr-details';
+import { ServerId, ServerOption } from './types/server-option';
 
 export class ReservationDetails {
   constructor(private r: Response.ActiveReservation) {}
@@ -121,7 +122,11 @@ export class ReservationDetails {
     return this.r.steam_uid;
   }
 
-  get serverId(): number | null {
-    return this.r.server_id;
+  get serverId(): ServerId {
+    return this.r.server_id as ServerId;
+  }
+
+  get server(): ServerOption {
+    return this.r.server as ServerOption;
   }
 }
