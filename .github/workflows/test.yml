@@ -1,0 +1,73 @@
+name: test
+
+on:
+  push:
+    branches:
+      - 'master'
+      - '*.*.*'
+      - 'renovate/**'
+    tags:
+      - '*.*.*'
+  pull_request:
+    branches:
+      - 'master'
+      - '*.*.*'
+
+jobs:
+  unit-test:
+    name: unit
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [lts, 20.x]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run unit test
+        run: pnpm test
+
+  build:
+    name: build
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [lts, 20.x]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        run: pnpm build

@@ -5,10 +5,8 @@ import { WhitelistId } from './types/whitelist-option';
 import { SdrDetails } from './types/sdr-details';
 
 export class ReservationDetails {
-  constructor(
-    private r: Response.ActiveReservation,
-  ) {}
-  
+  constructor(private r: Response.ActiveReservation) {}
+
   protected setResponse(response: Response.ActiveReservation) {
     this.r = response;
   }
@@ -126,5 +124,4 @@ export class ReservationDetails {
   get serverId(): number | null {
     return this.r.server_id;
   }
-
 }
