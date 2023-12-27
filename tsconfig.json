@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2016",
+    "target": "es2018",
     "module": "commonjs",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -13,6 +13,14 @@
     "useUnknownInCatchVariables": true,
     "noUnusedLocals": true,
     "noImplicitReturns": true,
-    "skipLibCheck": true
-  }
+    "skipLibCheck": true,
+    "outDir": "dist",
+    "sourceMap": true,
+    "stripInternal": true,
+    "declaration": true
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }

@@ -19,7 +19,8 @@ export namespace Response {
     | 'Ready'
     | 'SDR Ready' // should not happen
     | 'Ending'
-    | 'Ended';
+    | 'Ended'
+    | 'Unknown';
 
   export interface ReservationBounds {
     starts_at: string;
