@@ -49,6 +49,14 @@ vi.mock('./client', () => {
       data: {
         reservation: {
           ...mockReservationResponse,
+          status: 'Ready',
+        },
+      },
+    }),
+    delete: vi.fn().mockResolvedValue({
+      data: {
+        reservation: {
+          ...mockReservationResponse,
           status: 'Ending',
         },
       },
@@ -58,10 +66,11 @@ vi.mock('./client', () => {
 });
 
 describe('Reservation', () => {
+  let client: Client;
   let reservation: Reservation;
 
   beforeEach(() => {
-    const client = new Client({
+    client = new Client({
       apiKey: 'FAKE_API_KEY',
       endpoint: 'FAKE_SERVEME_ENDPOINT',
     });
@@ -109,9 +118,20 @@ describe('Reservation', () => {
     });
   });
 
-  describe('#refresh', () => {
+  describe('#refresh()', () => {
     it('should refresh reservation details', async () => {
       await reservation.refresh();
+      expect(client.httpClient.get).toHaveBeenCalledWith('/reservations/12345');
+      expect(reservation.status).toEqual(ReservationStatus.ready);
+    });
+  });
+
+  describe('#end()', () => {
+    it('should call the API', async () => {
+      await reservation.end();
+      expect(client.httpClient.delete).toHaveBeenCalledWith(
+        '/reservations/12345',
+      );
       expect(reservation.status).toEqual(ReservationStatus.ending);
     });
   });
