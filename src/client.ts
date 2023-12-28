@@ -61,11 +61,11 @@ export class Client {
   }
 
   async create(options: CreateReservationOptions): Promise<Reservation> {
-    const startsAt = options.startsAt || new Date();
-    const endsAt = options.endsAt || add(startsAt, { hours: 2 });
-    const rcon = this.reservation?.rcon || options.rcon || generatePassword();
+    const startsAt = options.startsAt ?? new Date();
+    const endsAt = options.endsAt ?? add(startsAt, { hours: 2 });
+    const rcon = this.reservation?.rcon ?? options.rcon ?? generatePassword();
     const password =
-      this.reservation?.password || options.password || generatePassword();
+      this.reservation?.password ?? options.password ?? generatePassword();
 
     const response =
       await this.httpClient.post<Response.ServemeTfReservationDetails>(

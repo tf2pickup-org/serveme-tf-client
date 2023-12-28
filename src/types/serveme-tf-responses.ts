@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace Response {
   interface ServemeTfServerOption {
     id: number;
@@ -45,7 +46,7 @@ export namespace Response {
     sdr_final?: boolean;
     enable_plugins: boolean;
     enable_demostf: boolean;
-    errors: { [key: string]: { error: string } };
+    errors: Record<string, { error: string }>;
   }
 
   export interface ActiveReservation extends ReservationBounds {

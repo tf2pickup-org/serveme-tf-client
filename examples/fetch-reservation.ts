@@ -23,4 +23,4 @@ if (!reservationId) {
   throw new Error('no reservation id provided');
 }
 
-fetchReservation(reservationId);
+fetchReservation(reservationId).catch(error => console.error(error));

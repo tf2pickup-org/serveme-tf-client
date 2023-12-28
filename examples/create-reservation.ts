@@ -47,4 +47,4 @@ const reserveServer = async () => {
   console.log(`reservation created: ${reservation.id}`);
 };
 
-reserveServer();
+reserveServer().catch(error => console.error(error));
