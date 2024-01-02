@@ -16,7 +16,7 @@ export class Reservation extends ReservationDetails {
         `/reservations/${this.id}`,
       );
 
-    this.setResponse(response.data.reservation);
+    this.setResponse(response.reservation);
     return this;
   }
 
@@ -26,7 +26,7 @@ export class Reservation extends ReservationDetails {
         `/reservations/${this.id}`,
       );
 
-    this.setResponse(response.data.reservation);
+    this.setResponse(response.reservation);
     return this;
   }
 }

@@ -1,21 +1,10 @@
-import axios, { AxiosError } from 'axios';
-import { ServemeTfApiError } from './errors/serveme-tf-api.error';
+import { HttpClient } from './http-client';
 
 export const createServemeTfHttpClient = (endpoint: string, apiKey: string) => {
-  const http = axios.create({
-    baseURL: `https://${endpoint}/api`,
+  return new HttpClient({
+    baseUrl: `https://${endpoint}/api`,
     params: {
       api_key: apiKey,
     },
   });
-
-  http.interceptors.response.use(null, error => {
-    if (error instanceof AxiosError) {
-      throw new ServemeTfApiError();
-    } else {
-      throw error;
-    }
-  });
-
-  return http;
 };
