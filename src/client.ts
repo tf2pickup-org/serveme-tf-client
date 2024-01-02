@@ -11,6 +11,8 @@ import { add } from 'date-fns';
 import { ReservationId } from './types/reservation-id';
 import { CreateReservationOptions } from './types/create-reservation-options';
 import { HttpClient } from './http-client';
+import { HttpClientError } from './errors/http-client.error';
+import { ServemeTfApiError } from './errors';
 
 interface ClientOptions {
   apiKey: string;
@@ -65,23 +67,41 @@ export class Client {
     const password =
       this.reservation?.password ?? options.password ?? generatePassword();
 
-    const response =
-      await this.httpClient.post<Response.ServemeTfReservationDetails>(
-        '/reservations',
-        {
-          reservation: {
-            server_id: options.serverId,
-            starts_at: startsAt.toISOString(),
-            ends_at: endsAt.toISOString(),
-            rcon,
-            password,
-            enable_plugins: options.enablePlugins,
-            enable_demos_tf: options.enableDemosTf,
+    try {
+      const response =
+        await this.httpClient.post<Response.ServemeTfReservationDetails>(
+          '/reservations',
+          {
+            reservation: {
+              server_id: options.serverId,
+              starts_at: startsAt.toISOString(),
+              ends_at: endsAt.toISOString(),
+              rcon,
+              password,
+              ...(options.enablePlugins && {
+                enable_plugins: options.enablePlugins,
+              }),
+              ...(options.enableDemosTf && {
+                enable_demos_tf: options.enableDemosTf,
+              }),
+            },
           },
-        },
-      );
+        );
 
-    return new Reservation(this, response.reservation);
+      return new Reservation(this, response.reservation);
+    } catch (error) {
+      if (error instanceof HttpClientError) {
+        const errorList = (
+          error as HttpClientError<Response.ServemeTfFindOptions>
+        ).data.reservation.errors;
+        const message = Object.entries(errorList)
+          .map(([key, value]) => `${key} ${value.error}`)
+          .join('; ');
+        throw new ServemeTfApiError(message, error);
+      } else {
+        throw error;
+      }
+    }
   }
 
   async fetch(id: ReservationId): Promise<Reservation> {
