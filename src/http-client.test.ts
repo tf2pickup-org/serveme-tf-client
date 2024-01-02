@@ -32,7 +32,6 @@ describe('HttpClient', () => {
     });
 
     const response = await httpClient.request(HttpMethod.GET, '/example', {});
-
     expect(response).toEqual({
       foo: 'bar',
     });
@@ -82,6 +81,10 @@ describe('HttpClient', () => {
         ok: false,
         status: 500,
         statusText: 'Internal Server Error',
+        json: () =>
+          Promise.resolve({
+            foo: 'bar',
+          }),
       });
 
       await expect(
