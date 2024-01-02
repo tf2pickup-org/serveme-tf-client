@@ -1,3 +1,4 @@
+import { ServemeTfApiError } from '../src';
 import { Client } from '../src/client';
 import { KnownEndpoint } from '../src/types/known-endpoint';
 
@@ -47,4 +48,10 @@ const reserveServer = async () => {
   console.log(`reservation created: ${reservation.id}`);
 };
 
-reserveServer().catch(error => console.error(error));
+reserveServer().catch(error => {
+  if (error instanceof ServemeTfApiError) {
+    console.error(error.message);
+  } else {
+    console.error(error);
+  }
+});
