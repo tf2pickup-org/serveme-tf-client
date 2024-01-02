@@ -1,4 +1,3 @@
-import { AxiosInstance } from 'axios';
 import { KnownEndpoint } from './types/known-endpoint';
 import { createServemeTfHttpClient } from './create-serveme-tf-http-client';
 import { Reservation } from './reservation';
@@ -11,6 +10,7 @@ import { generatePassword } from './generate-password';
 import { add } from 'date-fns';
 import { ReservationId } from './types/reservation-id';
 import { CreateReservationOptions } from './types/create-reservation-options';
+import { HttpClient } from './http-client';
 
 interface ClientOptions {
   apiKey: string;
@@ -19,7 +19,7 @@ interface ClientOptions {
 
 export class Client {
   readonly endpoint: KnownEndpoint | string;
-  readonly httpClient: AxiosInstance;
+  readonly httpClient: HttpClient;
   private reservation?: Response.Reservation;
 
   constructor(options: ClientOptions) {
@@ -31,24 +31,22 @@ export class Client {
     const entryResponse =
       await this.httpClient.get<Response.ServemeTfEntry>('/reservations/new');
 
-    const findServers = entryResponse.data.actions.find_servers;
+    const findServers = entryResponse.actions.find_servers;
 
     const reservationResponse =
       await this.httpClient.post<Response.ServemeTfFindOptions>(findServers, {
-        reservation: entryResponse.data.reservation,
+        reservation: entryResponse.reservation,
       });
 
-    const servers = reservationResponse.data.servers.map(server => ({
+    const servers = reservationResponse.servers.map(server => ({
       ...server,
       id: server.id as ServerId,
     }));
-    const serverConfigs = reservationResponse.data.server_configs.map(
-      config => ({
-        ...config,
-        id: config.id as ServerConfigId,
-      }),
-    );
-    const whitelists = reservationResponse.data.whitelists.map(whitelist => ({
+    const serverConfigs = reservationResponse.server_configs.map(config => ({
+      ...config,
+      id: config.id as ServerConfigId,
+    }));
+    const whitelists = reservationResponse.whitelists.map(whitelist => ({
       ...whitelist,
       id: whitelist.id as WhitelistId,
     }));
@@ -83,7 +81,7 @@ export class Client {
         },
       );
 
-    return new Reservation(this, response.data.reservation);
+    return new Reservation(this, response.reservation);
   }
 
   async fetch(id: ReservationId): Promise<Reservation> {
@@ -92,6 +90,6 @@ export class Client {
         `/reservations/${id}`,
       );
 
-    return new Reservation(this, response.data.reservation);
+    return new Reservation(this, response.reservation);
   }
 }

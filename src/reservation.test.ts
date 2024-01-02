@@ -46,19 +46,15 @@ vi.mock('./client', () => {
   const Client = vi.fn();
   Client.prototype.httpClient = {
     get: vi.fn().mockResolvedValue({
-      data: {
-        reservation: {
-          ...mockReservationResponse,
-          status: 'Ready',
-        },
+      reservation: {
+        ...mockReservationResponse,
+        status: 'Ready',
       },
     }),
     delete: vi.fn().mockResolvedValue({
-      data: {
-        reservation: {
-          ...mockReservationResponse,
-          status: 'Ending',
-        },
+      reservation: {
+        ...mockReservationResponse,
+        status: 'Ending',
       },
     }),
   };
