@@ -31,7 +31,7 @@ export class HttpClient {
     });
 
     if (response.ok) {
-      return await response.json();
+      return (await response.json()) as Response;
     } else {
       throw new HttpClientError(url, response.status, response.statusText);
     }

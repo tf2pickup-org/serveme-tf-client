@@ -25,9 +25,10 @@ describe('HttpClient', () => {
   it('should request', async () => {
     fetch.mockResolvedValueOnce({
       ok: true,
-      json: async () => ({
-        foo: 'bar',
-      }),
+      json: () =>
+        Promise.resolve({
+          foo: 'bar',
+        }),
     });
 
     const response = await httpClient.request(HttpMethod.GET, '/example', {});
@@ -49,9 +50,10 @@ describe('HttpClient', () => {
     it('should request', async () => {
       fetch.mockResolvedValueOnce({
         ok: true,
-        json: async () => ({
-          foo: 'bar',
-        }),
+        json: () =>
+          Promise.resolve({
+            foo: 'bar',
+          }),
       });
 
       const response = await httpClient.request(

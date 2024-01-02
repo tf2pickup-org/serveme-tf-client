@@ -4,6 +4,6 @@ export class HttpClientError extends Error {
     public readonly status: number,
     public readonly statusText: string,
   ) {
-    super(`${url}: ${status} ${statusText}`);
+    super(`${url.toString()}: ${status} ${statusText}`);
   }
 }
