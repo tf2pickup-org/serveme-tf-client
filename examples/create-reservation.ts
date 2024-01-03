@@ -46,6 +46,13 @@ const reserveServer = async () => {
   });
 
   console.log(`reservation created: ${reservation.id}`);
+
+  await reservation.waitForStarted();
+  console.log(`server started`);
+  console.log(
+    `connect string: connect ${reservation.server.ip_and_port}; password ${reservation.password}`,
+  );
+  console.log(`rcon password: ${reservation.rcon}`);
 };
 
 reserveServer().catch(error => {

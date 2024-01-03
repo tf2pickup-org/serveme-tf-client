@@ -1,8 +1,10 @@
-import { beforeEach, expect, vi, describe, it } from 'vitest';
+import { beforeEach, expect, vi, describe, it, afterEach } from 'vitest';
 import { Reservation } from './reservation';
 import { Client } from './client';
 import { Response } from './types/serveme-tf-responses';
 import { ReservationStatus } from './types/reservation-status';
+import { secondsToMilliseconds } from 'date-fns';
+import { TimeoutError } from './errors/timeout.error';
 
 const mockReservationResponse: Response.ActiveReservation = vi.hoisted(() => ({
   status: 'Starting',
@@ -129,6 +131,90 @@ describe('Reservation', () => {
         '/reservations/12345',
       );
       expect(reservation.status).toEqual(ReservationStatus.ending);
+    });
+  });
+
+  describe('#waitForStarted()', () => {
+    let refreshNo = 0;
+
+    beforeEach(() => {
+      refreshNo = 0;
+      vi.mocked(client.httpClient).get.mockImplementation(() => {
+        switch (refreshNo++) {
+          case 0:
+            return Promise.resolve({
+              reservation: {
+                ...mockReservationResponse,
+                status: 'Waiting to start',
+              },
+            });
+
+          case 1:
+            return Promise.resolve({
+              reservation: {
+                ...mockReservationResponse,
+                status: 'Starting',
+              },
+            });
+
+          default:
+            return Promise.resolve({
+              reservation: {
+                ...mockReservationResponse,
+                status: 'Ready',
+              },
+            });
+        }
+      });
+    });
+
+    afterEach(() => {
+      vi.useRealTimers();
+    });
+
+    it('should wait for reservation to start', () =>
+      new Promise<void>((resolve, reject) => {
+        vi.useFakeTimers();
+        reservation
+          .waitForStarted()
+          .then(() => {
+            expect(reservation.status).toEqual(ReservationStatus.ready);
+            resolve();
+          })
+          .catch(reject);
+        vi.advanceTimersByTime(secondsToMilliseconds(20));
+      }));
+
+    describe('when the reservation has ended', () => {
+      beforeEach(() => {
+        vi.mocked(client.httpClient).get.mockResolvedValue({
+          reservation: {
+            ...mockReservationResponse,
+            status: 'Ended',
+          },
+        });
+      });
+
+      it('should throw', () =>
+        new Promise<void>((resolve, reject) => {
+          vi.useFakeTimers();
+          reservation
+            .waitForStarted()
+            .then(reject)
+            .catch(error => {
+              expect(error.message).toEqual(
+                'invalid reservation status: Ended',
+              );
+              resolve();
+            });
+          vi.advanceTimersByTime(secondsToMilliseconds(20));
+        }));
+    });
+
+    it('should timeout', async () => {
+      await expect(reservation.waitForStarted(100)).rejects.toThrow(
+        TimeoutError,
+      );
     });
   });
 });
