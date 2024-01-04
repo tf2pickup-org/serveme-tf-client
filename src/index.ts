@@ -1,6 +1,6 @@
-export { Client as ServemeTfClient } from './client';
-export { ReservationDetails as ServemeTfReservationDetails } from './reservation-details';
-export { Reservation as ServemeTfReservation } from './reservation';
+export { Client } from './client';
+export { ReservationDetails } from './reservation-details';
+export { Reservation } from './reservation';
 
 export { CreateReservationOptions } from './types/create-reservation-options';
 export { KnownEndpoint } from './types/known-endpoint';
