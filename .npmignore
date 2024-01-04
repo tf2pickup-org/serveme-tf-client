@@ -1,0 +1,10 @@
+.github
+examples
+src
+.editorconfig
+.eslint.cjs
+.prettierignore
+.prettierc
+renovate.json
+tsconfig*.json
+vitest.config.ts

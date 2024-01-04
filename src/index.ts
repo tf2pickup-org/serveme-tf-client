@@ -1,8 +1,6 @@
 export { Client as ServemeTfClient } from './client';
 export { ReservationDetails as ServemeTfReservationDetails } from './reservation-details';
 export { Reservation as ServemeTfReservation } from './reservation';
-export { HttpClient } from './http-client';
-export { HttpMethod } from './http-method';
 
 export { CreateReservationOptions } from './types/create-reservation-options';
 export { KnownEndpoint } from './types/known-endpoint';
