@@ -1,5 +1,12 @@
 
 
+## [0.0.2](https://github.com/tf2pickup-org/serveme-tf-client/compare/0.0.1...0.0.2) (2024-01-04)
+
+
+### Bug Fixes
+
+* **build:** fix publish script ([af6b175](https://github.com/tf2pickup-org/serveme-tf-client/commit/af6b175f9acc88468f7bad74f86833665acb8e46))
+
 ## 0.0.1 (2024-01-04)
 
 
