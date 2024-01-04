@@ -1,6 +1,6 @@
 {
   "name": "@tf2pickup-org/serveme-tf-client",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A serveme.tf API client",
   "license": "MIT",
   "homepage": "https://github.com/tf2pickup-org/serveme-tf-client",

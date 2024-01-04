@@ -1,5 +1,12 @@
 
 
+## [0.0.3](https://github.com/tf2pickup-org/serveme-tf-client/compare/0.0.2...0.0.3) (2024-01-04)
+
+
+### Bug Fixes
+
+* **build:** don't rename exports ([c27387e](https://github.com/tf2pickup-org/serveme-tf-client/commit/c27387e9f6de34ca6cc0c383157faf79c0489a3f))
+
 ## [0.0.2](https://github.com/tf2pickup-org/serveme-tf-client/compare/0.0.1...0.0.2) (2024-01-04)
 
 
