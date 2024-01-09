@@ -2,6 +2,18 @@
 
 <p align="center">A wrapper around serveme.tf's API</p>
 
+<p align="center">
+  <a href="https://www.npmjs.com/package/@tf2pickup-org/serveme-tf-client/">
+    <img src="https://img.shields.io/npm/v/@tf2pickup-org/serveme-tf-client" alt="Latest release">
+  </a>
+  <a href="https://github.com/tf2pickup-org/serveme-tf-client/actions/workflows/test.yml">
+    <img src="https://github.com/tf2pickup-org/serveme-tf-client/actions/workflows/test.yml/badge.svg" alt="Test status">
+  </a>
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT license">
+  </a>
+</p>
+
 ### Installation
 
 ```bash
