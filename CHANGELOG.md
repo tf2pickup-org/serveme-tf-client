@@ -1,5 +1,18 @@
 
 
+# [0.1.0](https://github.com/tf2pickup-org/serveme-tf-client/compare/0.0.4...0.1.0) (2024-03-18)
+
+
+### Bug Fixes
+
+* **deps:** update dependency date-fns to v3.5.0 ([a4f57d1](https://github.com/tf2pickup-org/serveme-tf-client/commit/a4f57d1796317775619132b4c3dce004722af7c0))
+* **deps:** update dependency date-fns to v3.6.0 ([50bf4e4](https://github.com/tf2pickup-org/serveme-tf-client/commit/50bf4e4c74f8a2c3adfbe0122291df53cffffdd8))
+
+
+### Features
+
+* add firstMap create option ([#8](https://github.com/tf2pickup-org/serveme-tf-client/issues/8)) ([bb51808](https://github.com/tf2pickup-org/serveme-tf-client/commit/bb51808f871ce68dff23993ea54ad5caa0164b43))
+
 ## [0.0.4](https://github.com/tf2pickup-org/serveme-tf-client/compare/0.0.3...0.0.4) (2024-03-13)
 
 
