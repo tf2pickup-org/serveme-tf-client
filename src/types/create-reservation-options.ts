@@ -12,4 +12,5 @@ export interface CreateReservationOptions {
   whitelistId?: WhitelistId;
   enablePlugins?: boolean;
   enableDemosTf?: boolean;
+  firstMap?: string;
 }

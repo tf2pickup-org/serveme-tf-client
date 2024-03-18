@@ -84,6 +84,7 @@ export class Client {
               ...(options.enableDemosTf && {
                 enable_demos_tf: options.enableDemosTf,
               }),
+              ...(options.firstMap && { first_map: options.firstMap }),
             },
           },
         );
