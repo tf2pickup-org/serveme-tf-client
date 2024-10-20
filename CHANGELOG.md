@@ -1,5 +1,12 @@
 
 
+## [0.1.1](https://github.com/tf2pickup-org/serveme-tf-client/compare/0.1.0...0.1.1) (2024-10-20)
+
+
+### Bug Fixes
+
+* handle serveme.tf API errors properly ([#13](https://github.com/tf2pickup-org/serveme-tf-client/issues/13)) ([0a4f6e9](https://github.com/tf2pickup-org/serveme-tf-client/commit/0a4f6e93c691393bfd7bcfab808a154cf3b9308f))
+
 # [0.1.0](https://github.com/tf2pickup-org/serveme-tf-client/compare/0.0.4...0.1.0) (2024-03-18)
 
 
