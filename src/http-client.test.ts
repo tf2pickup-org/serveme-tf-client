@@ -81,10 +81,7 @@ describe('HttpClient', () => {
         ok: false,
         status: 500,
         statusText: 'Internal Server Error',
-        json: () =>
-          Promise.resolve({
-            foo: 'bar',
-          }),
+        text: () => Promise.resolve('Internal Server Error'),
       });
 
       await expect(
