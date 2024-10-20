@@ -37,7 +37,7 @@ export class HttpClient {
         url,
         response.status,
         response.statusText,
-        await response.json(),
+        await response.text(),
       );
     }
   }
