@@ -1,5 +1,12 @@
 
 
+## [0.1.2](https://github.com/tf2pickup-org/serveme-tf-client/compare/0.1.1...0.1.2) (2024-10-20)
+
+
+### Bug Fixes
+
+* **deps:** update dependency date-fns to v4 ([#12](https://github.com/tf2pickup-org/serveme-tf-client/issues/12)) ([d60c200](https://github.com/tf2pickup-org/serveme-tf-client/commit/d60c200a88a5a47cd835359e89d7705228f418af))
+
 ## [0.1.1](https://github.com/tf2pickup-org/serveme-tf-client/compare/0.1.0...0.1.1) (2024-10-20)
 
 
