@@ -15,7 +15,7 @@ dependencies:
 devDependencies:
   '@release-it/conventional-changelog':
     specifier: ^9.0.0
-    version: 9.0.0(release-it@17.10.0)
+    version: 9.0.1(release-it@17.10.0)
   '@types/node':
     specifier: ^20.10.6
     version: 20.16.13
@@ -524,8 +524,8 @@ packages:
       config-chain: 1.1.13
     dev: true
 
-  /@release-it/conventional-changelog@9.0.0(release-it@17.10.0):
-    resolution: {integrity: sha512-jISIZ3kFR/xxBlDlbLBdQJsIDaml6NzTueAps3uZV2GDnQhe6FytCAmztiyEXRvCBXIvVV4X/O9S2l5zt2vmbA==}
+  /@release-it/conventional-changelog@9.0.1(release-it@17.10.0):
+    resolution: {integrity: sha512-7vGLMLcj/MaQjktNPR0rI6fdFVvVDXpOqk/fVTaFSeMVd9vjpVGrvRg5+Ko82Z/dOsiLGLEMFMQ9Xu31YjvJ5g==}
     engines: {node: ^18.18.0 || ^20.9.0 || ^22.0.0}
     peerDependencies:
       release-it: ^17.0.0
