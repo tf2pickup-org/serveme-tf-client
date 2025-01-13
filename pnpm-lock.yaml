@@ -29,11 +29,11 @@ devDependencies:
     specifier: ^8.56.0
     version: 8.57.1
   eslint-config-prettier:
-    specifier: ^9.1.0
-    version: 9.1.0(eslint@8.57.1)
+    specifier: ^10.0.0
+    version: 10.0.1(eslint@8.57.1)
   eslint-plugin-prettier:
     specifier: ^5.1.2
-    version: 5.2.1(eslint-config-prettier@9.1.0)(eslint@8.57.1)(prettier@3.4.2)
+    version: 5.2.1(eslint-config-prettier@10.0.1)(eslint@8.57.1)(prettier@3.4.2)
   prettier:
     specifier: ^3.1.1
     version: 3.4.2
@@ -1695,8 +1695,8 @@ packages:
       source-map: 0.6.1
     dev: true
 
-  /eslint-config-prettier@9.1.0(eslint@8.57.1):
-    resolution: {integrity: sha512-NSWl5BFQWEPi1j4TjVNItzYV7dZXZ+wP6I6ZhrBGpChQhZRUaElihE9uRRkcbRnNb76UMKDF3r+WTmNcGPKsqw==}
+  /eslint-config-prettier@10.0.1(eslint@8.57.1):
+    resolution: {integrity: sha512-lZBts941cyJyeaooiKxAtzoPHTN+GbQTJFAIdQbRhA4/8whaAraEh47Whw/ZFfrjNSnlAxqfm9i0XVAEkULjCw==}
     hasBin: true
     peerDependencies:
       eslint: '>=7.0.0'
@@ -1704,7 +1704,7 @@ packages:
       eslint: 8.57.1
     dev: true
 
-  /eslint-plugin-prettier@5.2.1(eslint-config-prettier@9.1.0)(eslint@8.57.1)(prettier@3.4.2):
+  /eslint-plugin-prettier@5.2.1(eslint-config-prettier@10.0.1)(eslint@8.57.1)(prettier@3.4.2):
     resolution: {integrity: sha512-gH3iR3g4JfF+yYPaJYkN7jEl9QbweL/YfkoRlNnuIEHEz1vHVlCmWOS+eGGiRuzHQXdJFCOTxRgvju9b8VUmrw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -1719,7 +1719,7 @@ packages:
         optional: true
     dependencies:
       eslint: 8.57.1
-      eslint-config-prettier: 9.1.0(eslint@8.57.1)
+      eslint-config-prettier: 10.0.1(eslint@8.57.1)
       prettier: 3.4.2
       prettier-linter-helpers: 1.0.0
       synckit: 0.9.1
